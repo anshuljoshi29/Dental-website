@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'website/css/panel.css'%}">
+    <style>
+        .background {
+            background-image: url({%static 'website/img/bg-img/25.jpg'%});
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-blend-mode: darken;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: -1;
+            filter: blur(3px);
+            min-height: 800px;
+        
+        }
+        
+    </style>
+<body>
+    
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbar"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar">
+      <div class="navbar-nav">
+
+        <a class="nav-item nav-link" id="home" href="{% url 'home' %}">Home</a>
+        <a class="nav-item nav-link" id="login" href="{% url 'panel' %}">Login</a>
+
+      </div>
+    </div>
+  </nav>
+  <br><br><br>
+  <div class="container">
+  <div class="background"></div>
+ 
+      <h2 style="text-align:center;">Login Form</h2>
+      <form action="" method="POST">
+        {%csrf_token%}
+
+          <div class="form-item">
+            <span class="material-icons-outlined">account_circle</span>  
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              placeholder="Enter email"
+              />
+          </div>
+
+          <div class="form-item">               
+            <span class="material-icons-outlined">                   
+                lock
+            </span>
+              <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password"
+              placeholder="Enter password"
+              />
+          </div>
+
+          <button type="submit"> LOGIN </button>
+      </form>
+    </div>
+  </div>
+
+</body>

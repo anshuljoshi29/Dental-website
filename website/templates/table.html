@@ -1,0 +1,68 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="{% static 'website/css/table.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/table2.css' %}">
+    <title>Table</title>
+  </head>
+  <body>
+    
+    <div class="topnav">
+      <div class="topnav-right">
+        <a href="{% url 'home'%}">Logout</a>
+        <a href="{% url 'table'%}">Table</a>
+      </div>
+    </div>
+  <div class="content">
+    
+    <div class="container">
+      <h2 style="text-align:center;" class="mb-5"><u> Appointments</u> </h2>
+      
+
+      <div class="table-responsive">
+        
+        <table style="margin-left:auto;margin-right:auto;" class="table table-striped custom-table">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Email</th>
+              <th scope="col">Address</th>
+              <th scope="col">Schedule</th>
+              <th scope="col">Day</th>
+              <th scope="col">Message</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr scope="row">
+            {% csrf_token %}
+            {% for value in data %}             
+              
+              <td>{{value.name}}</td>
+              <td>{{value.phone}}</td>
+              <td>{{value.email}}</td>
+              <td>{{value.address}}</td>
+              <td>{{value.schedule}}</td>
+              <td>{{value.day}}</td>
+              <td>{{value.message}}</td>
+              <td><a href="{% url 'delete_data' value.id %}" method="POST">Delete</a></td>
+            </tr>
+            {% endfor %}
+            
+            
+          </tbody>
+        </table>
+      </div>
+
+</div>
+  </div>
+  </body>
+</html>
